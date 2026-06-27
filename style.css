@@ -1,0 +1,150 @@
+#htx-floating-critter {
+  position: fixed !important;
+  top: 20px !important;
+  right: 25px !important;
+  z-index: 2147483647 !important;
+  width: 180px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+  font-family: monospace !important;
+  transition: transform 0.3s cubic-bezier(0.3, 1, 0.2, 1), opacity 0.3s ease !important;
+  pointer-events: auto !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  --dodge-x: 0px;
+  --dodge-y: 0px;
+}
+
+#htx-floating-critter.zooop-dodge {
+  transform: translate(var(--dodge-x), var(--dodge-y)) !important;
+  opacity: 0.95 !important;
+}
+
+#htx-floating-critter #status-text {
+  font-weight: bold !important;
+  font-size: 10px !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 0 8px rgba(0, 255, 200, 0.4) !important;
+  user-select: none !important;
+}
+
+#htx-floating-critter .face-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.eyes-wrapper {
+  display: flex !important;
+  gap: 24px !important;
+  align-items: center !important;
+  height: 40px !important;
+}
+
+#htx-floating-critter .eye {
+  width: 32px !important;
+  height: 32px !important;
+  background: #10141d !important;
+  border: 2px solid #3a4454 !important;
+  border-radius: 50% !important;
+  position: relative !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  /* animation: htx-blink 4s infinite ease-in-out !important; */
+}
+
+#htx-floating-critter .pupil {
+  width: 12px !important;
+  height: 12px !important;
+  background: #00ffcc !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  box-shadow: 0 0 10px #00ffcc !important;
+  transition: opacity 0.1s ease !important;
+}
+
+@keyframes htx-blink {
+  0%, 45%, 55%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0); }
+}
+
+#htx-floating-critter .eye.happy {
+  border-color: #00ffcc !important;
+  /* animation: htx-float 3s infinite ease-in-out, htx-blink 4s infinite ease-in-out !important; */
+}
+
+#htx-floating-critter .eye.waiting {
+  border-color: #00a2ff !important;
+  height: 20px !important;
+  border-radius: 16px !important;
+  animation: htx-pulse 1.5s infinite ease-in-out !important;
+}
+#htx-floating-critter .eye.waiting .pupil {
+  background: #00a2ff !important;
+  box-shadow: 0 0 10px #00a2ff !important;
+  width: 8px !important;
+}
+
+#htx-floating-critter .eye.frustrated {
+  border-color: #ff3366 !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: #ff3366 !important;
+  animation: htx-twitch 0.15s infinite alternate !important;
+}
+#htx-floating-critter .eye.frustrated .pupil {
+  opacity: 0 !important;
+}
+
+.critter-mouth {
+  width: 16px;
+  height: 8px;
+  border-bottom: 2px solid transparent;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.critter-mouth.reveal {
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
+}
+
+.critter-mouth.happy-smile {
+  border-bottom: 2px solid #00ffcc !important;
+  box-shadow: 0 3px 6px rgba(0, 255, 204, 0.2);
+}
+
+.critter-mouth.waiting-straight {
+  width: 12px !important;
+  height: 0px !important;
+  border-bottom: 2px solid #00a2ff !important;
+  border-radius: 0 !important;
+}
+
+.critter-mouth.frustrated-sad {
+  border-top: 2px solid #ff3366 !important;
+  border-bottom: none !important;
+  border-radius: 50%;
+}
+
+@keyframes htx-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes htx-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+}
+@keyframes htx-twitch {
+  0% { transform: translate(1px, 0); }
+  100% { transform: translate(-1px, -1px); }
+}

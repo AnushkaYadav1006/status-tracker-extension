@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Status Critter",
+  "version": "1.8",
+  "description": "Frameless critter with high precision performance timeline tracking arrays.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["style.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
